@@ -19,9 +19,9 @@ public class TipoEventoImpl implements IntTipoEvento {
 	
 	private void cargarDatos() {
 		listaTipoEventos.add(new TipoEvento(1, "Concierto", "Conciertos de los buenos"));
-		listaTipoEventos.add(new TipoEvento(2, "Despedida", "Fiesta de las buenas"));
-		listaTipoEventos.add(new TipoEvento(3, "Cumpleaños", "Felicidades"));
-		listaTipoEventos.add(new TipoEvento(4, "Boda", "Con lo que saquen de esto se compran un coche"));
+		listaTipoEventos.add(new TipoEvento(2, "Presentación libro", "Libros de los buenos"));
+		listaTipoEventos.add(new TipoEvento(3, "Excursión", "Viajes de los buenos"));
+		listaTipoEventos.add(new TipoEvento(4, "Meetup", "Haz networking y a vivir"));
 		listaTipoEventos.add(new TipoEvento(5, "Mitin político", "No te creas nada"));
 		listaTipoEventos.add(new TipoEvento(6, "Convención", "Entérate de algo"));
 		listaTipoEventos.add(new TipoEvento(7, "Conferencia", "No te aburras"));
@@ -44,25 +44,25 @@ public class TipoEventoImpl implements IntTipoEvento {
 	}
 
 	@Override
-	public int insertarCliente(TipoEvento tipoEvento) {
+	public int insertarTipoEvento(TipoEvento tipoEvento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modificarCliente(TipoEvento tipoEvento) {
+	public int modificarTipoEvento(TipoEvento tipoEvento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarCliente(TipoEvento tipoEvento) {
+	public int eliminarTipoEvento(TipoEvento tipoEvento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarCliente(int idTipoEvento) {
+	public int eliminarTipoEvento(int idTipoEvento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

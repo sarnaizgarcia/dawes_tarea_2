@@ -43,25 +43,27 @@ public class ReservasImpl implements IntReserva {
 	}
 
 	@Override
-	public int insertarCliente(Reserva reserva) {
+	public int insertarReserva(Reserva reserva) {
+		if (listaReservas.contains(reserva))
+			return 0;
+		else
+			return listaReservas.add(reserva) ? 1 : 0;
+	}
+
+	@Override
+	public int modificarReserva(Reserva reserva) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modificarCliente(Reserva reserva) {
+	public int eliminarReserva(Reserva reserva) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarCliente(Reserva reserva) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int eliminarCliente(int idReserva) {
+	public int eliminarReserva(int idReserva) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

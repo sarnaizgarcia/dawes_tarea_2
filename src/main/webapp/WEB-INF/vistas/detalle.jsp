@@ -9,7 +9,9 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	<p><img alt="logo" src="main/resources/static/logo.png"></p>
+	<div>
+		<img alt="logo" src="main/resources/static/logo.png">
+	</div>
 	
 	<p>Bienvenido ${usuario.getNombreUsuario() }</p>
 	
@@ -41,12 +43,20 @@
 			<th>${evento.getAforoMaximo() }</th>
 		</tr>
 		<tr>
-			<td>Mínima asistencia</td>
+			<td>Asistencia mínima</td>
 			<th>${evento.getMinimoAsistencia() }</th>
+		</tr>
+		<tr>
+			<td>Precio unitario</td>
+			<th><fmt:formatNumber type="number" maxFractionDigits="2" value="${evento.getPrecio() }" /></th>
 		</tr>
 	</table>
 	
-	<div>Quedan ${evento.getPlazasDisponibles() }</div>
+	<div>Quedan ${evento.getPlazasDisponibles() } entradas</div>
+	
+	<div>
+		<img alt="${evento.getNombreEvento() }" src="main/resources/static/logo.png">
+	</div>
 	
 	<form action="reserva" method="post">
 		<p>Cantidad<input type="number" max="10" min="1" name="emailUsuario" ></p>

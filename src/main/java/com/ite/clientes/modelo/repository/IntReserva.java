@@ -7,9 +7,9 @@ import com.ite.clientes.modelo.beans.Reserva;
 public interface IntReserva {
 	Reserva findById(int idReserva);
 	List<Reserva> findAll();
-	int insertarCliente(Reserva reserva);
-	int modificarCliente(Reserva reserva);
-	int eliminarCliente(Reserva reserva);
-	int eliminarCliente(int idReserva);
+	int insertarReserva(Reserva reserva);
+	int modificarReserva(Reserva reserva);
+	int eliminarReserva(Reserva reserva);
+	int eliminarReserva(int idReserva);
 
 }

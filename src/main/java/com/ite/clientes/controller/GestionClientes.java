@@ -18,6 +18,7 @@ import com.ite.clientes.modelo.beans.Cliente;
 import com.ite.clientes.modelo.beans.Evento;
 import com.ite.clientes.modelo.repository.IntCliente;
 import com.ite.clientes.modelo.repository.IntEvento;
+import com.ite.clientes.modelo.repository.IntReserva;
 
 @Controller
 @RequestMapping("/clientes")
@@ -27,6 +28,9 @@ public class GestionClientes {
 	private IntCliente iCliente;
 	@Autowired
 	private IntEvento iEvento;
+	@Autowired
+	private IntReserva iReserva;
+
 	
 	@GetMapping("/login")
 	public String acceso() {
@@ -84,6 +88,14 @@ public class GestionClientes {
 	public String verDetalleEvento(@PathVariable("id") int idEvento, HttpSession sesion, Model model) {
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);
+		// Si el evento existe
+			// Coger los detalles de la reserva
+			// Hacer un new de Reserva
+			// Incluirlo con insertarReserva() de Reservas Imp;
+			// Crear una reserva
+			// Mostrar esa reserva
+
+		
 		return "detalle";
 	}
 
@@ -96,4 +108,5 @@ public class GestionClientes {
 	public String error() {
 		return "error";
 	}
+	
 }

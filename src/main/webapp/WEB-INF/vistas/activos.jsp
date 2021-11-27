@@ -8,8 +8,10 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	<p><img alt="logo" src="main/resources/static/logo.png"></p>
-	
+	<div>
+		<img alt="logo" src="main/resources/static/logo.png">
+	</div>
+		
 	<div>Eventos Activos</div>
 	
 	<div class="menu-item">

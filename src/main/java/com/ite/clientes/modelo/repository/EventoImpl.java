@@ -47,25 +47,25 @@ public class EventoImpl implements IntEvento {
 	}
 
 	@Override
-	public int insertarCliente(Evento evento) {
+	public int insertarEvento(Evento evento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modificarCliente(Evento evento) {
+	public int modificarEvento(Evento evento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarCliente(Evento evento) {
+	public int eliminarEvento(Evento evento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarCliente(int idEvento) {
+	public int eliminarEvento(int idEvento) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

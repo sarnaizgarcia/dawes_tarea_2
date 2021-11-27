@@ -8,10 +8,10 @@ public interface IntTipoEvento {
 	
 	TipoEvento findById(int idTipoEvento);
 	List<TipoEvento> findAll();
-	int insertarCliente(TipoEvento tipoEvento);
-	int modificarCliente(TipoEvento tipoEvento);
-	int eliminarCliente(TipoEvento tipoEvento);
-	int eliminarCliente(int idTipoEvento);
+	int insertarTipoEvento(TipoEvento tipoEvento);
+	int modificarTipoEvento(TipoEvento tipoEvento);
+	int eliminarTipoEvento(TipoEvento tipoEvento);
+	int eliminarTipoEvento(int idTipoEvento);
 
 
 }
