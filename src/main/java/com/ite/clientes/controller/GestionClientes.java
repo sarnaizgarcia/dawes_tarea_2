@@ -93,37 +93,41 @@ public class GestionClientes {
 	}
 	
 	@PostMapping("/detalle/reservar/{id}")
-	public String hacerReserva(Reserva reserva, @PathVariable("id") int idEvento, HttpSession sesion, Model model) {
-		System.out.println(idEvento);
+	public String hacerReserva(Reserva reserva, @PathVariable("id") int idEvento, HttpSession sesion, Model model, RedirectAttributes attr) {
 		Evento evento = iEvento.findById(idEvento);
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		model.addAttribute("evento", evento);
 		model.addAttribute("reserva", reserva);
 
-		// Si el evento existe
-//		if (evento != null) {
-//			System.out.println(reserva.toString());
-//			reserva.setIdEvento(idEvento);
-//			reserva.setIdUsuario(usuario.getIdUsuario());
-//			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
-//			iReserva.insertarReserva(reserva);
-//			return "redirect:/clientes/activos";
-//		} else if (evento == null){
-//			return "evento-no-encontrado";
-//		}
-			// Coger los detalles de la reserva
-			// Hacer un new de Reserva
-			// Incluirlo con insertarReserva() de Reservas Imp;
-			// Crear una reserva
-			// Mostrar esa reserva
-		return "redirect:/clientes/reservar/{id}";
+		if (reserva.getCantidad() == 0) {
+			model.addAttribute("mensajeError", "Tienes que indicar una cantidad para hacer la reserva.");
+			return "redirect:/clientes/error-reserva";
+		} else if (evento == null){
+			model.addAttribute("mensajeError", "No se ha encontrado el evento.");
+			return "redirect:/clientes/error-reserva";
+		} else if (evento != null) {
+			reserva.setIdEvento(idEvento);
+			reserva.setIdUsuario(usuario.getIdUsuario());
+			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
+			iReserva.insertarReserva(reserva);
+			attr.addFlashAttribute("reserva", reserva);
+			return "redirect:/clientes/reservar/{id}";
+		} 
+		return null;
 	}
 
-//	@GetMapping("/reservar/{id}")
-//	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion) {
-//		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
-//		return "exito-reserva";
-//	}
+	@GetMapping("/reservar/{id}")
+	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion, Reserva reserva, Model model) {
+		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
+		Evento evento = iEvento.findById(idEvento);
+		model.addAttribute("evento", evento);
+		return "exito-reserva";
+	}
+	
+	@GetMapping("/error-reserva")
+	public String errorReserva() {
+		return "error-reserva"; // Falla
+	}
 	
 	@GetMapping("/error-login")
 	public String errorLogin() {

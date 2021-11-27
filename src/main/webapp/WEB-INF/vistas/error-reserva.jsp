@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<h1>El evento al que intentas acceder no existe.</h1>
+	<h1>${mensajeError }</h1>
 	
 	<p>Por favor, vuelve a acceder al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
 			
