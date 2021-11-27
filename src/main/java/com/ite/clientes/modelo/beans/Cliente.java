@@ -26,7 +26,7 @@ public class Cliente implements Serializable {
 		this.emailUsuario = emailUsuario;
 		this.nombreUsuario = nombreUsuario;
 		this.direccionUsuario = direccionUsuario;
-		this.enabled = 0;
+		this.enabled = 0; // 1 logado.
 		this.fechaAlta = fechaAlta;
 		this.rol = "Cliente";
 	}

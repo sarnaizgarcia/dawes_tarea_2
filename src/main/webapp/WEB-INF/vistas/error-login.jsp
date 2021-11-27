@@ -8,6 +8,10 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	Hola
+	
+	<h1>Se ha producido un error en el login</h1>
+	
+	<p>Por favor, <a href="/clientes/login">vuelve a intentarlo</a></p>
+			
 </body>
 </html>

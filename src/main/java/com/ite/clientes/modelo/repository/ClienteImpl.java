@@ -31,6 +31,15 @@ public class ClienteImpl implements IntCliente {
 				.orElse(null);
 		return cliente;
 	}
+	
+	@Override
+	public Cliente findByEmail(String email) {
+		Cliente cliente = listaClientes.stream()
+				.filter(ele -> email.equals(ele.getEmailUsuario()))
+				.findAny()
+				.orElse(null);
+		return cliente;
+	}
 
 	@Override
 	public List<Cliente> findAll() {

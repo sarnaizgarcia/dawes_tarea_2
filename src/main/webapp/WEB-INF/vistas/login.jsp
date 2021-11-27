@@ -8,9 +8,9 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	<form action="/login" method="post">
-		<p>Usuario<input type="text" name="usuario" ></p>
-		<p>Contraseña<input type="text" name="password" ></p>
+	<form action="login" method="post">
+		<p>Email<input type="text" name="emailUsuario" ></p>
+		<p>Contraseña<input type="text" name="passwordUsuario" ></p>
 		<p><input type="submit" value="Enviar"></p>
 	</form>		
 </body>
