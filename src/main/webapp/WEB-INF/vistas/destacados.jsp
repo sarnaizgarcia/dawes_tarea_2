@@ -10,11 +10,11 @@
 <body>
 	<p><img alt="logo" src="main/resources/static/logo.png"></p>
 	
-	<div>Eventos Activos</div>
+	<div>Eventos Destacados</div>
 	
 	<div class="menu-item">
-		<div class="sub-item"><a href="destacados">Destacados</a></div>
-		<div class="sub-item">Activos</div>
+		<div class="sub-item">Destacados</div>
+		<div class="sub-item"><a href="activos">Activos</a></div>
 	</div>
 	<div class="menu-item">Tipo de evento</div>
 	<div class="menu-item">Mis reservas</div>
@@ -24,7 +24,7 @@
 	
 	<p>Bienvenido ${usuario.getNombreUsuario() }</p>
 	
-	<h3>Listado de eventos activos</h3>
+	<h3>Listado de eventos destacados</h3>
 	
 	<table border="2">
 		<tr>
@@ -34,7 +34,7 @@
 			<th>Opciones</th>
 		</tr>
 		<c:forEach var="ele" items="${eventos }">
-			<c:if test="${ele.getEstadoEvento().equals('Activo') }">
+			<c:if test="${ele.isDestacadoEvento().equals('Sí') }">
 				<tr>
 					<td>${ele.nombreEvento}</td>
 					<td>${ele.aforoMaximo}</td>

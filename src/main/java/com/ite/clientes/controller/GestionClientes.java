@@ -26,11 +26,6 @@ public class GestionClientes {
 	private IntCliente iCliente;
 	@Autowired
 	private IntEvento iEvento;
-
-//	@GetMapping("/")
-//	public String principal() {
-//		return "principal";
-//	}
 	
 	@GetMapping("/login")
 	public String acceso() {
@@ -62,7 +57,6 @@ public class GestionClientes {
 	
 	@GetMapping("/cerrarSesion")
 	public String cerrarSesion(Model model, HttpSession sesion) {
-		// porque no puedo obtener aquí los atributos del usuario?
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		usuario.setEnabled(0);
 		return "cierre-sesion";
@@ -72,7 +66,7 @@ public class GestionClientes {
 	public String mostrarActivos(Model model, HttpSession sesion, RedirectAttributes attr) {
 		List<Evento> eventos = iEvento.findAll();
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
-		System.out.println(usuario.toString());
+
 		if (usuario.getEnabled() == 1) {
 			model.addAttribute("eventos", eventos);
 			return "activos";
@@ -84,9 +78,8 @@ public class GestionClientes {
 	@GetMapping("/destacados")
 	public String mostrarDestacados(Model model) {
 		List<Evento> eventos = iEvento.findAll();
-		// porque no puedo obtener aquí los atributos del usuario?
 		model.addAttribute("eventos", eventos);
-		return "";
+		return "destacados";
 	}
 
 	@GetMapping("/error-login")
