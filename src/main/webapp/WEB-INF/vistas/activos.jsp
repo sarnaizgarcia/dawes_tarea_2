@@ -8,6 +8,7 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	Hola
+	${eventos }
+	
 </body>
 </html>

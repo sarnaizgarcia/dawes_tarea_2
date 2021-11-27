@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ite.clientes.modelo.beans.Cliente;
 import com.ite.clientes.modelo.beans.Evento;
@@ -26,12 +27,11 @@ public class GestionClientes {
 	
 	@GetMapping("/login")
 	public String acceso() {
-//		System.out.println(iCliente.findAll().toString());
 		return "login";
 	}
 	
 	@PostMapping("/login")
-	public String inicioSesion(Cliente cliente) {
+	public String inicioSesion(RedirectAttributes attr, Cliente cliente) {
 		String emailUsuario = cliente.getEmailUsuario();
 		String passwordUsuario = cliente.getPasswordUsuario();
 		
@@ -40,7 +40,9 @@ public class GestionClientes {
 		if (existeCliente != null) {
 			if (passwordUsuario.equals(existeCliente.getPasswordUsuario())) {
 				existeCliente.setEnabled(1);
-				return "activos";
+				List<Evento> eventos = iEvento.findAll();
+				attr.addFlashAttribute("eventos", "Muchos");
+				return "redirect:/clientes/activos";
 			} else {
 				return "error-login";
 			}
@@ -53,7 +55,6 @@ public class GestionClientes {
 	public String mostrarActivos(Model model) {
 		List<Evento> eventos = iEvento.findAll();
 		model.addAttribute("eventos", eventos);
-		//sacar el listado de todos los eventos activos y opción detalle
 		return "activos";
 	}
 
