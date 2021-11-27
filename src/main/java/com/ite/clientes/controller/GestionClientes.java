@@ -101,7 +101,7 @@ public class GestionClientes {
 
 		if (reserva.getCantidad() == 0) {
 			model.addAttribute("mensajeError", "Tienes que indicar una cantidad para hacer la reserva.");
-			return "redirect:/clientes/error-reserva";
+			return "error-reserva";
 		} else if (evento == null){
 			model.addAttribute("mensajeError", "No se ha encontrado el evento.");
 			return "redirect:/clientes/error-reserva";
@@ -124,10 +124,10 @@ public class GestionClientes {
 		return "exito-reserva";
 	}
 	
-	@GetMapping("/error-reserva")
-	public String errorReserva() {
-		return "error-reserva"; // Falla
-	}
+//	@GetMapping("/error-reserva")
+//	public String errorReserva() {
+//		return "error-reserva"; // Falla
+//	}
 	
 	@GetMapping("/error-login")
 	public String errorLogin() {
