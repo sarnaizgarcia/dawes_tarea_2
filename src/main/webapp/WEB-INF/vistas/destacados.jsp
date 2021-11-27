@@ -39,7 +39,7 @@
 					<td>${ele.nombreEvento}</td>
 					<td>${ele.aforoMaximo}</td>
 					<td>${ele.fechaEvento}</td>
-					<td>Opciones</td>
+					<td><a href="detalle/${ele.getIdEvento() }">Detalle</a></td>
 				</tr>
 			</c:if>
 		</c:forEach>

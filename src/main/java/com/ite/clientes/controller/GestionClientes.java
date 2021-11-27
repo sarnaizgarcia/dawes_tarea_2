@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,10 +43,7 @@ public class GestionClientes {
 		if (existeCliente != null) {
 			if (passwordUsuario.equals(existeCliente.getPasswordUsuario())) {
 				existeCliente.setEnabled(1);
-//				List<Evento> eventos = iEvento.findAll();
-//				attr.addFlashAttribute("eventos", eventos);
 				sesion.setAttribute("usuario", existeCliente);
-//				attr.addFlashAttribute("usuario", existeCliente);
 				return "redirect:/clientes/activos";
 			} else {
 				return "error-login";
@@ -80,6 +78,13 @@ public class GestionClientes {
 		List<Evento> eventos = iEvento.findAll();
 		model.addAttribute("eventos", eventos);
 		return "destacados";
+	}
+	
+	@GetMapping("/detalle/{id}")
+	public String verDetalleEvento(@PathVariable("id") int idEvento, HttpSession sesion, Model model) {
+		Evento evento = iEvento.findById(idEvento);
+		model.addAttribute("evento", evento);
+		return "detalle";
 	}
 
 	@GetMapping("/error-login")
