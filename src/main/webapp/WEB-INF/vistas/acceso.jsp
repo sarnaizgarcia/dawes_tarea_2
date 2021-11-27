@@ -11,7 +11,7 @@
 	
 	<h1>Bienvenido a Eventos Web</h1>
 	
-	<p><a href="/clientes/login">Login</a> </p>
+	<p><a href="/clientes/login">Login</a></p>
 		
 </body>
 </html>

@@ -21,7 +21,6 @@ public class ReservasImpl implements IntReserva {
 		IntEvento iEvento = new EventoImpl();
 		IntCliente iCliente = new ClienteImpl();
 		
-		System.out.println(iEvento.findAll().toString());
 		listaReservas.add(new Reserva(iEvento.findById(1).getIdEvento(), iCliente.findById(1).getIdUsuario(), 1000, "Poco que observar", 9));
 		listaReservas.add(new Reserva(iEvento.findById(2).getIdEvento(), iCliente.findById(1).getIdUsuario(), 2000, "Poco que observar", 9));
 		listaReservas.add(new Reserva(iEvento.findById(3).getIdEvento(), iCliente.findById(1).getIdUsuario(), 3000, "Poco que observar", 9));

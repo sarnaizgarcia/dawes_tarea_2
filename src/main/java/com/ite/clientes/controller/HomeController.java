@@ -9,6 +9,6 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String inicio(Model model) {
-		return "inicio";
+		return "acceso";
 	}
 }

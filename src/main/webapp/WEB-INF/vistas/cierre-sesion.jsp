@@ -8,10 +8,10 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
+	<p><img alt="logo" src="main/resources/static/logo.png"></p>
 	
-	<h1>Bienvenido a Eventos Web</h1>
-		
-	<p><a href="/clientes/">Acceso</a></p>
+	<h3>Has cerrado sesión</h3>
 	
+	<p>Puedes volver a acceder <a href="/clientes/login">aquí</a></p>
 </body>
 </html>

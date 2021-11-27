@@ -9,9 +9,9 @@
 </head>
 <body>
 	
-	<h1>Bienvenido a Eventos Web</h1>
-		
-	<p><a href="/clientes/">Acceso</a></p>
+	<h1>Se ha producido un error.</h1>
 	
+	<p>Por favor, <a href="/clientes/login">vuelve a acceder.</a></p>
+			
 </body>
 </html>
