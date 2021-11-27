@@ -9,9 +9,9 @@
 </head>
 <body>
 	
-	<h1>Se ha producido un error.</h1>
+	<h1>El evento al que intentas acceder no existe.</h1>
 	
-	<p>Por favor, vuelve a acceder <a href="/clientes/login">aquí.</a></p>
+	<p>Por favor, vuelve a acceder al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
 			
 </body>
 </html>

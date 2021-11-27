@@ -19,8 +19,8 @@ public class ClienteImpl implements IntCliente {
 	}
 	
 	private void cargarDatos() {
-		listaClientes.add(new Cliente(1, "presi", "PSOE", "pedro@mail.com", "Pedro Sánchez", "Ferraz, 70", new Date()));
-		listaClientes.add(new Cliente(2, "pablo", "PP", "pablo@mail.com", "Pablo Casado", "Génova, 13", new Date()));
+		listaClientes.add(new Cliente(1, "presi", "1234", "pedro@mail.com", "Pedro Sánchez", "Ferraz, 70", new Date()));
+		listaClientes.add(new Cliente(2, "pablo", "abcd", "pablo@mail.com", "Pablo Casado", "Génova, 13", new Date()));
 	}
 
 	@Override

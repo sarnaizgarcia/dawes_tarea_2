@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ite.clientes.modelo.beans.Cliente;
 import com.ite.clientes.modelo.beans.Evento;
+import com.ite.clientes.modelo.beans.Reserva;
 import com.ite.clientes.modelo.repository.IntCliente;
 import com.ite.clientes.modelo.repository.IntEvento;
 import com.ite.clientes.modelo.repository.IntReserva;
@@ -85,20 +86,45 @@ public class GestionClientes {
 	}
 	
 	@GetMapping("/detalle/{id}")
-	public String verDetalleEvento(@PathVariable("id") int idEvento, HttpSession sesion, Model model) {
+	public String verDetalleEvento(@PathVariable("id") int idEvento, Model model) {
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);
+		return "detalle";
+	}
+	
+	@PostMapping("/detalle/reservar/{id}")
+	public String hacerReserva(Reserva reserva, @PathVariable("id") int idEvento, HttpSession sesion, Model model) {
+		System.out.println(idEvento);
+		Evento evento = iEvento.findById(idEvento);
+		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
+		model.addAttribute("evento", evento);
+		model.addAttribute("reserva", reserva);
+
 		// Si el evento existe
+//		if (evento != null) {
+//			System.out.println(reserva.toString());
+//			reserva.setIdEvento(idEvento);
+//			reserva.setIdUsuario(usuario.getIdUsuario());
+//			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
+//			iReserva.insertarReserva(reserva);
+//			return "redirect:/clientes/activos";
+//		} else if (evento == null){
+//			return "evento-no-encontrado";
+//		}
 			// Coger los detalles de la reserva
 			// Hacer un new de Reserva
 			// Incluirlo con insertarReserva() de Reservas Imp;
 			// Crear una reserva
 			// Mostrar esa reserva
-
-		
-		return "detalle";
+		return "redirect:/clientes/reservar/{id}";
 	}
 
+//	@GetMapping("/reservar/{id}")
+//	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion) {
+//		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
+//		return "exito-reserva";
+//	}
+	
 	@GetMapping("/error-login")
 	public String errorLogin() {
 		return "error-login";

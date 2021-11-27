@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 				<tr>
 					<td>${ele.nombreEvento}</td>
 					<td>${ele.aforoMaximo}</td>
-					<td>${ele.fechaEvento}</td>
+					<td><fmt:formatDate pattern="dd-MM-yyyy" value="${ele.fechaEvento}" /></td>
 					<td><a href="detalle/${ele.getIdEvento() }">Detalle</a></td>
 				</tr>
 			</c:if>

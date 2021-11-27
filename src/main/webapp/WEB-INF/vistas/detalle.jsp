@@ -58,8 +58,8 @@
 		<img alt="${evento.getNombreEvento() }" src="main/resources/static/logo.png">
 	</div>
 	
-	<form action="reserva" method="post">
-		<p>Cantidad<input type="number" max="10" min="1" name="emailUsuario" ></p>
+	<form action="reservar/${evento.getIdEvento() }" method="post">
+		<p>Cantidad<input type="number" max="10" min="1" name="cantidad" ></p>
 		<p><input type="submit" value="Reservar"></p>
 	</form>		
 	

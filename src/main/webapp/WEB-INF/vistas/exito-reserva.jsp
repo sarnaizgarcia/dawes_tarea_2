@@ -9,9 +9,11 @@
 </head>
 <body>
 	
-	<h1>Se ha producido un error.</h1>
+	<h1>La reserva se ha realizado con éxito.</h1>
 	
-	<p>Por favor, vuelve a acceder <a href="/clientes/login">aquí.</a></p>
+	<p>Los datos son los siguientes:</p>
+	
+	<p>Por favor, vuelve a acceder al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
 			
 </body>
 </html>
