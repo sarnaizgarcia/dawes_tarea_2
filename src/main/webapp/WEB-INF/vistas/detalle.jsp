@@ -63,6 +63,8 @@
 		<p><input type="submit" value="Reservar"></p>
 	</form>		
 	
+	<p>Puedes volver al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
+	
 	
 	
 </body>

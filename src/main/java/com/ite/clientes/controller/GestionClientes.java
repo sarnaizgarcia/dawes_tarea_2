@@ -124,10 +124,10 @@ public class GestionClientes {
 		return "exito-reserva";
 	}
 	
-	@GetMapping("/error-reserva")
-	public String errorReserva() {
-		return "error-reserva"; // Falla
-	}
+//	@GetMapping("/error-reserva")
+//	public String errorReserva() {
+//		return "error-reserva"; // Falla
+//	}
 	
 	@GetMapping("/error-login")
 	public String errorLogin() {
