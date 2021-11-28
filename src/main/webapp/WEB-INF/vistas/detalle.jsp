@@ -153,14 +153,12 @@
 	<form action="reservar/${evento.getIdEvento() }" method="post" class="texto">
 		<p>
 			<p>Cantidad</p>
-			<input type="number" max="10" min="1" name="cantidad" >
+			<input type="number" max="10" min="1" name="cantidad">
 		</p>
-		<p><input type="submit" value="Reservar"></p>
+		<p><input type="submit" value="Reservar" id="boton"></p>
 	</form>		
 	
 	<p class="texto">Puedes volver al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
-	
-	
 	
 </body>
 </html>

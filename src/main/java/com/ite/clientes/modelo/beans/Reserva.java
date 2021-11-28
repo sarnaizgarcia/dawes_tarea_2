@@ -13,7 +13,7 @@ public class Reserva implements Serializable {
 	private int idUsuario;
 	private double precioReserva;
 	private String observaciones;
-	private int cantidad;
+	private Integer cantidad;
 	
 	public Reserva() {
 		super();
@@ -21,7 +21,7 @@ public class Reserva implements Serializable {
 	}
 
 	public Reserva(int idEvento, int idUsuario, double precioReserva, String observaciones,
-			int cantidad) {
+			Integer cantidad) {
 		super();
 		this.idReserva = serie++;
 		this.idEvento = idEvento;
@@ -71,11 +71,11 @@ public class Reserva implements Serializable {
 		this.observaciones = observaciones;
 	}
 
-	public int getCantidad() {
+	public Integer getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
 

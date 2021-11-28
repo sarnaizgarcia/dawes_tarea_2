@@ -45,7 +45,7 @@ public class GestionClientes {
 	
 	/**
 	 * Procesa el login del usuario
-	 * Comprueba si existe un usuario con esos atributos (email y password)
+	 * Comprueba si existe un usuario con esos atributos (emaily password)
 	 * Si existe, crea un atributo de sesión con el usuario
 	 * Y redirige la vista a la /clientes/activos
 	 * Si el usuario no existe, redirige a una vista de error 
@@ -128,24 +128,23 @@ public class GestionClientes {
 	 */
 	@GetMapping("/detalle/{id}")
 	public String verDetalleEvento(@PathVariable("id") int idEvento, Model model) {
-		System.out.println("verDetalleEvento");
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);
 		return "detalle";
 	}
 	
 	@PostMapping("/detalle/reservar/{id}")
-	public String hacerReserva(Reserva reserva, @PathVariable("id") int idEvento, HttpSession sesion, Model model, RedirectAttributes attr) {
-		System.out.println("hacerReserva");
+	public String hacerReserva(Reserva reserva, @PathVariable(name = "id") int idEvento, HttpSession sesion, Model model, RedirectAttributes attr) {
+		
 		Evento evento = iEvento.findById(idEvento);
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		model.addAttribute("evento", evento);
 		model.addAttribute("reserva", reserva);
 
-		if (reserva != null) {
+		if (reserva != null && reserva.getCantidad() != null) {
 			reserva.setIdEvento(idEvento);
 			reserva.setIdUsuario(usuario.getIdUsuario());
-			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
+			reserva.setPrecioReserva(evento.getPrecio() * (reserva.getCantidad() == null ? 0 : reserva.getCantidad()));
 			iReserva.insertarReserva(reserva);
 			attr.addFlashAttribute("reserva", reserva);
 			return "redirect:/clientes/reservar/{id}";
@@ -156,18 +155,12 @@ public class GestionClientes {
 
 	@GetMapping("/reservar/{id}")
 	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion, Reserva reserva, Model model) {
-		System.out.println("mostrarReserva");
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);
 		return "exito-reserva";
 	}
-	
-//	@GetMapping("/error-reserva")
-//	public String errorReserva() {
-//		return "error-reserva"; // Falla
-//	}
-	
+
 	/**
 	 * Muestra una vista de error si el login es incorrecto
 	 * @return error en el login en clientes/login

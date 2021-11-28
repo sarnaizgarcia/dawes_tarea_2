@@ -10,7 +10,8 @@
 <body>
 	
 	<h1>${mensajeError }</h1>
-	
+
+	<p>La reserva no se ha podido realizar.</p>
 	<p>Por favor, vuelve a acceder al listado de eventos activos <a href="/clientes/activos">aquí.</a></p>
 			
 </body>
