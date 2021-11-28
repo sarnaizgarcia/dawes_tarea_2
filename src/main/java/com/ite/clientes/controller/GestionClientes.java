@@ -60,8 +60,8 @@ public class GestionClientes {
 	
 	@GetMapping("/cerrarSesion")
 	public String cerrarSesion(Model model, HttpSession sesion) {
-		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
-		usuario.setEnabled(0);
+		sesion.removeAttribute("usuario");
+		sesion.invalidate();
 		return "cierre-sesion";
 	}
 	
@@ -70,7 +70,7 @@ public class GestionClientes {
 		List<Evento> eventos = iEvento.findAll();
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 
-		if (usuario.getEnabled() == 1) {
+		if (usuario.getEnabled() == 1 && usuario != null) {
 			model.addAttribute("eventos", eventos);
 			return "activos";
 		} else {
@@ -101,7 +101,7 @@ public class GestionClientes {
 
 		if (reserva.getCantidad() == 0) {
 			model.addAttribute("mensajeError", "Tienes que indicar una cantidad para hacer la reserva.");
-			return "error-reserva";
+			return "redirect:/clientes/error-reserva";
 		} else if (evento == null){
 			model.addAttribute("mensajeError", "No se ha encontrado el evento.");
 			return "redirect:/clientes/error-reserva";
@@ -124,10 +124,10 @@ public class GestionClientes {
 		return "exito-reserva";
 	}
 	
-//	@GetMapping("/error-reserva")
-//	public String errorReserva() {
-//		return "error-reserva"; // Falla
-//	}
+	@GetMapping("/error-reserva")
+	public String errorReserva() {
+		return "error-reserva"; // Falla
+	}
 	
 	@GetMapping("/error-login")
 	public String errorLogin() {
