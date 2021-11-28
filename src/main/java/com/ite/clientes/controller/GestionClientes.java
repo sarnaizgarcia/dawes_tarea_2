@@ -24,7 +24,9 @@ import com.ite.clientes.modelo.repository.IntReserva;
 @Controller
 @RequestMapping("/clientes")
 public class GestionClientes {
-	
+	// Pedimos que busque la clase que implementa estas interfaces,
+	// crea una instancia de esas implementaciones y pasa la referencia
+	// del objeto a las variables declaradas.
 	@Autowired
 	private IntCliente iCliente;
 	@Autowired
@@ -32,7 +34,9 @@ public class GestionClientes {
 	@Autowired
 	private IntReserva iReserva;
 
-	
+	/*
+	 * Muestra la vista de login
+	 */
 	@GetMapping("/login")
 	public String acceso() {
 		return "login";
@@ -87,6 +91,7 @@ public class GestionClientes {
 	
 	@GetMapping("/detalle/{id}")
 	public String verDetalleEvento(@PathVariable("id") int idEvento, Model model) {
+		System.out.println("verDetalleEvento");
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);
 		return "detalle";
@@ -94,6 +99,7 @@ public class GestionClientes {
 	
 	@PostMapping("/detalle/reservar/{id}")
 	public String hacerReserva(Reserva reserva, @PathVariable("id") int idEvento, HttpSession sesion, Model model, RedirectAttributes attr) {
+		System.out.println("hacerReserva");
 		Evento evento = iEvento.findById(idEvento);
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		model.addAttribute("evento", evento);
@@ -101,23 +107,22 @@ public class GestionClientes {
 
 		if (reserva.getCantidad() == 0) {
 			model.addAttribute("mensajeError", "Tienes que indicar una cantidad para hacer la reserva.");
-			return "redirect:/clientes/error-reserva";
-		} else if (evento == null){
-			model.addAttribute("mensajeError", "No se ha encontrado el evento.");
-			return "redirect:/clientes/error-reserva";
-		} else if (evento != null) {
+			return "redirect:/clientes/reservar/{id}";
+		} else if (reserva != null) {
 			reserva.setIdEvento(idEvento);
 			reserva.setIdUsuario(usuario.getIdUsuario());
 			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
 			iReserva.insertarReserva(reserva);
 			attr.addFlashAttribute("reserva", reserva);
 			return "redirect:/clientes/reservar/{id}";
-		} 
-		return null;
+		} else {
+			return "error-reserva";
+		}
 	}
 
 	@GetMapping("/reservar/{id}")
 	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion, Reserva reserva, Model model) {
+		System.out.println("mostrarReserva");
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 		Evento evento = iEvento.findById(idEvento);
 		model.addAttribute("evento", evento);

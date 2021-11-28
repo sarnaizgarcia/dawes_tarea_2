@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<img alt="logo" src="main/resources/static/logo.png">
+		<img alt="logo" src="/logo.png">
 	</div>
 		
 	<div>Eventos Destacados</div>

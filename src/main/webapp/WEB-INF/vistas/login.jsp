@@ -6,12 +6,29 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Tarea 2 - DAWES</title>
+<style type="text/css">
+	body {
+		font-family: "sans-serif";
+	}
+	
+	#boton {
+		border-radius: 5px;
+		border: 2px solid #00ACFF 
+	}
+</style>
 </head>
 <body>
+<!-- En esta vista se muestran el formulario para hacer login -->
 	<form action="login" method="post">
-		<p>Email<input type="email" name="emailUsuario" ></p>
-		<p>Contraseña<input type="password" name="passwordUsuario" ></p>
-		<p><input type="submit" value="Enviar"></p>
+		<p>
+			<p>Email</p>
+			<input type="email" name="emailUsuario" >
+		</p>
+		<p>
+			<p>Contraseña</p>
+			<input type="password" name="passwordUsuario" >
+		</p>
+		<p><input type="submit" value="Enviar" id="boton"></p>
 	</form>		
 </body>
 </html>

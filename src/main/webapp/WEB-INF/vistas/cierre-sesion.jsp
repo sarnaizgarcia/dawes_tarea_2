@@ -8,7 +8,7 @@
 <title>Tarea 2 - DAWES</title>
 </head>
 <body>
-	<p><img alt="logo" src="main/resources/static/logo.png"></p>
+	<p><img alt="logo" src="/logo.png"></p>
 	
 	<h3>Has cerrado sesión</h3>
 	

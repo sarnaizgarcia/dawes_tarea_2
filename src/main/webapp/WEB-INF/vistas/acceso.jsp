@@ -6,6 +6,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Tarea 2 - DAWES</title>
+<style type="text/css">
+	body {
+		font-family: "sans-serif";
+	}
+</style>
+
 </head>
 <body>
 	

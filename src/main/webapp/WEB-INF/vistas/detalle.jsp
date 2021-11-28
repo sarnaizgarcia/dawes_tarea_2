@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<img alt="logo" src="main/resources/static/logo.png">
+		<img alt="logo" src="/logo.png">
 	</div>
 	
 	<p>Bienvenido ${usuario.getNombreUsuario() }</p>
@@ -55,7 +55,7 @@
 	<div>Quedan ${evento.getPlazasDisponibles() } entradas</div>
 	
 	<div>
-		<img alt="${evento.getNombreEvento() }" src="main/resources/static/logo.png">
+		<img alt="${evento.getNombreEvento() }" src="/evento.jpeg">
 	</div>
 	
 	<form action="reservar/${evento.getIdEvento() }" method="post">
