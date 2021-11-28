@@ -34,16 +34,27 @@ public class GestionClientes {
 	@Autowired
 	private IntReserva iReserva;
 
-	/*
-	 * Muestra la vista de login
+	/**
+	 * Muestra la vista del login en /clientes/login
+	 * @return la vista para iniciar sesión
 	 */
 	@GetMapping("/login")
 	public String acceso() {
 		return "login";
 	}
 	
+	/**
+	 * Procesa el login del usuario
+	 * Comprueba si existe un usuario con esos atributos (email y password)
+	 * Si existe, crea un atributo de sesión con el usuario
+	 * Y redirige la vista a la /clientes/activos
+	 * Si el usuario no existe, redirige a una vista de error 
+	 * @param cliente: es el cliente que ha iniciado sesión
+	 * @param sesion: es la instancia de la sesión
+	 * @return la pantalla de incio después del login con los eventos activos
+	 */
 	@PostMapping("/login")
-	public String inicioSesion(RedirectAttributes attr, Cliente cliente, HttpSession sesion) {
+	public String inicioSesion(Cliente cliente, HttpSession sesion) {
 		String emailUsuario = cliente.getEmailUsuario();
 		String passwordUsuario = cliente.getPasswordUsuario();
 		
@@ -62,6 +73,12 @@ public class GestionClientes {
 		}
 	}
 	
+	/**
+	 * Elimina al usuario de la sesión y la finaliza
+	 * @param model: instancia de Model 
+	 * @param sesion: es la instancia de la sesión
+	 * @return la vista de cierre de sesión
+	 */
 	@GetMapping("/cerrarSesion")
 	public String cerrarSesion(Model model, HttpSession sesion) {
 		sesion.removeAttribute("usuario");
@@ -69,8 +86,17 @@ public class GestionClientes {
 		return "cierre-sesion";
 	}
 	
+	/**
+	 * Muestra los eventos activos
+	 * Obtiene un listado de los eventos y comprueba si el usuario existe
+	 * Si es así, crea un atributo con los eventos y dirige la vista a /clientes/activos
+	 * Si no, muestra un error
+	 * @param model: instancia de Model
+	 * @param sesion: es la instancia de la sesión
+	 * @return la vista de los eventos activos
+	 */
 	@GetMapping("/activos")
-	public String mostrarActivos(Model model, HttpSession sesion, RedirectAttributes attr) {
+	public String mostrarActivos(Model model, HttpSession sesion) {
 		List<Evento> eventos = iEvento.findAll();
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
 
@@ -82,6 +108,11 @@ public class GestionClientes {
 		}
 	}
 	
+	/**
+	 * Muestra los eventos destacados
+	 * @param model: instancia de Model
+	 * @return la vista de los eventos destacados
+	 */
 	@GetMapping("/destacados")
 	public String mostrarDestacados(Model model) {
 		List<Evento> eventos = iEvento.findAll();
@@ -89,6 +120,12 @@ public class GestionClientes {
 		return "destacados";
 	}
 	
+	/**
+	 * Muestra el detalle del evento que se pasa por URLPath
+	 * @param idEvento
+	 * @param model
+	 * @return una vista del detalle del evento en /clientes/detalle/{id}
+	 */
 	@GetMapping("/detalle/{id}")
 	public String verDetalleEvento(@PathVariable("id") int idEvento, Model model) {
 		System.out.println("verDetalleEvento");
@@ -105,10 +142,7 @@ public class GestionClientes {
 		model.addAttribute("evento", evento);
 		model.addAttribute("reserva", reserva);
 
-		if (reserva.getCantidad() == 0) {
-			model.addAttribute("mensajeError", "Tienes que indicar una cantidad para hacer la reserva.");
-			return "redirect:/clientes/reservar/{id}";
-		} else if (reserva != null) {
+		if (reserva != null) {
 			reserva.setIdEvento(idEvento);
 			reserva.setIdUsuario(usuario.getIdUsuario());
 			reserva.setPrecioReserva(evento.getPrecio() * reserva.getCantidad());
@@ -134,11 +168,19 @@ public class GestionClientes {
 //		return "error-reserva"; // Falla
 //	}
 	
+	/**
+	 * Muestra una vista de error si el login es incorrecto
+	 * @return error en el login en clientes/login
+	 */
 	@GetMapping("/error-login")
 	public String errorLogin() {
 		return "error-login";
 	}
 	
+	/**
+	 * Devuelve una vista en caso de que haya un error no controlado
+	 * @return
+	 */
 	@GetMapping("/error")
 	public String error() {
 		return "error";
