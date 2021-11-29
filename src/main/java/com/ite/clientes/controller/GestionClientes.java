@@ -133,6 +133,19 @@ public class GestionClientes {
 		return "detalle";
 	}
 	
+	/**
+	 * Procesa las resevas para los eventos
+	 * Busca el evento y recupera el usuario
+	 * Si la reserva que crea el método existe y se ha metido el dato cantidad
+	 * Se añade la reserva a las demás
+	 * Si no, se muestra un error
+	 * @param reserva instancia de Reserva que crea Spring
+	 * @param idEvento id del evento del que se va a hacer la reseva
+	 * @param sesion
+	 * @param model
+	 * @param attr instancia de RedirectAttributes que hace llegar la reserva a la redirección
+	 * @return la vista del éxito de la reserva o del error
+	 */
 	@PostMapping("/detalle/reservar/{id}")
 	public String hacerReserva(Reserva reserva, @PathVariable(name = "id") int idEvento, HttpSession sesion, Model model, RedirectAttributes attr) {
 		
@@ -153,6 +166,14 @@ public class GestionClientes {
 		}
 	}
 
+	/**
+	 * Muestra los datos de la reserva si esta se hace correctamente
+	 * @param idEvento
+	 * @param sesion
+	 * @param reserva
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/reservar/{id}")
 	public String mostrarReserva(@PathVariable("id") int idEvento, HttpSession sesion, Reserva reserva, Model model) {
 		Cliente usuario = (Cliente) sesion.getAttribute("usuario");
